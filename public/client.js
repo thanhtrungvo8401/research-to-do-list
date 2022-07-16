@@ -7,5 +7,11 @@ window.addEventListener('load', function () {
 
         audio.play();
     })
+
+    const bg = document.getElementById('bg');
+    
+    bg.addEventListener('click', () => {
+        bg.style.display = 'none';
+    })
 })
 
