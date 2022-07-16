@@ -8,7 +8,7 @@ module.exports = function (app) {
     })
 
     app.post('/upload', (req, res) => {
-        console.log('UPLOAD FILE', req)
+        console.log('UPLOAD FILE', req.body)
 
         res.json({ success: true })
     })

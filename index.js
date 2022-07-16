@@ -4,6 +4,8 @@ const http = require('http');
 const routesRegister = require('./sevices/routes');
 const path = require('path');
 const socket = require('./sevices/socket');
+const bodyParser = require('body-parser');
+
 
 const port = 3000
 const app = express()
@@ -13,6 +15,9 @@ const server = http.createServer(app);
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static('public'))
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // init services:
 const io = socket(server);

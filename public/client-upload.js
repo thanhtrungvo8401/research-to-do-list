@@ -4,8 +4,12 @@ function submit(e) {
     const fileEl = document.querySelector("input[name='file']")
     const nameEl = document.querySelector("input[name='name']")
 
+    const formData = new FormData();
+    formData.append('file', fileEl.files[0]);
+    formData.append('name', nameEl.value);
+
     fetch('/upload', 
-        { method: 'POST', body: { file: fileEl[0], name: nameEl.value } }
+        { method: 'POST', body: formData }
     ).then(res => {
         return res.json()
     })
