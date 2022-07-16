@@ -1,7 +1,20 @@
 html
   head
     title= title
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")
+
   body
-    h1= title
+    h1(style="text-align: center") Upload your new file
+
+    form(action="/upload", method="post", id="form", style="margin: 0 auto; max-width: 500px")
+        div.form-group
+            label MP3 Only
+            input.form-control(type="file", name="file", accept=".mp3,audio/*", required)
+
+        div.form-group
+            label NAME
+            input.form-control(type="text", name="name", required)
+
+        button.primary(type="submit") UPLOAD
 
     script(src="/client-upload.js")
