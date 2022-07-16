@@ -10,7 +10,7 @@ module.exports = function (io) {
 			const key = `${HH}${mm}`
 
 			if (TO_DOS_OBJ[key]) {
-				io.emit('server-action', { value: `/to-dos/${TO_DOS_OBJ[key]}` })
+				io.emit('server-action', { value: `to-dos/${TO_DOS_OBJ[key]}` })
 			}
 		},
 		null,
