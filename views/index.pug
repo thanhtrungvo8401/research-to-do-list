@@ -16,6 +16,12 @@ html
           span.text-danger= item.time
           span.text-primary= item.action
 
+    br
+    h2 Ten file:
+    div
+      each i in total
+        div= i
+
 
     script(src="/socket.io/socket.io.js")
     script(src="/client.js")

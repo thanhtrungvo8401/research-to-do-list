@@ -7,10 +7,12 @@ module.exports = function (app) {
             title: 'Danh sách việc làm',
             list: Object.keys(TO_DOS_OBJ)
                 .sort((a, b) => a - b)
+                .filter(key => key !== 'total')
                 .map(key => ({
                     time: `${key.slice(0, 2)}H${key.slice(2)} : `,
                     action: TO_DOS_OBJ[key].slice(0, -9)
-                }))
+                })),
+            total: TO_DOS_OBJ['total'].map(i => `${i};`)
         })
     })
 

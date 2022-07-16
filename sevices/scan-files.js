@@ -6,13 +6,15 @@ module.exports = function () {
         if (err) console.log(err);
     
         else {
-            const toDos = {};
+            const toDos = { total: [] };
 
             files.forEach(f => {
                 if (path.extname(f) == '.mp3') {
                     const fileWithoutType = path.basename(f, '.mp3');
                     
                     toDos[fileWithoutType.slice(-4)] = f;
+
+                    toDos.total.push(path.basename(f));
                 }
             })
 
