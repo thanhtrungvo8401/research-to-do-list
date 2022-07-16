@@ -10,8 +10,6 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         const filename = file.originalname.toLocaleLowerCase().split(' ').join('-');
 
-        console.log(req.body);
-
         cb(null, filename);
     }
 });
@@ -19,10 +17,15 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage,
     fileFilter: (req, file, cb) => {
-        if (["audio/mpeg3", "audio/x-mpeg-3", "audio/mpeg"].includes(file.mimetype)) {
+        const validType = ["audio/mpeg3", "audio/x-mpeg-3", "audio/mpeg"].includes(file.mimetype);
+
+        const nameWithoutType =path.basename(file.originalname, '.mp3')
+        const validName = nameWithoutType.slice(-5).startsWith('-') && +nameWithoutType.slice(-4, -2) < 24 && +nameWithoutType.slice(-2) < 60;
+
+        if (validType && validName) {
             cb(null, true)
         } else {
-            cb(new Error('Only mp3 file format allowed!'));
+            cb(new Error('Name or type invalid'));
         }
     }
 });

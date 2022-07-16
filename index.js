@@ -5,7 +5,7 @@ const routesRegister = require('./sevices/routes');
 const path = require('path');
 const socket = require('./sevices/socket');
 const bodyParser = require('body-parser');
-
+const scanFiles = require('./sevices/scan-files');
 
 const port = 3000
 const app = express()
@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // init services:
 const io = socket(server);
 cron(io);
+scanFiles()
 
 // register root:
 routesRegister(app);
