@@ -2,11 +2,9 @@ function submit(e) {
     e?.preventDefault();
 
     const fileEl = document.querySelector("input[name='file']")
-    const nameEl = document.querySelector("input[name='name']")
 
     const formData = new FormData();
     formData.append('file', fileEl.files[0]);
-    formData.append('name', nameEl.value);
 
     fetch('/upload', 
         { method: 'POST', body: formData }
