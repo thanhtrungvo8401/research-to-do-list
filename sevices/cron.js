@@ -4,8 +4,14 @@ module.exports = function (io) {
 	const job = new CronJob(
 		'0 * * * * *',
 		function() {
-			io.emit('server-action', { value: Date() })
-			console.log('You will see this message every minutes', Date());
+			const HH = new Date().getHours();
+			const mm = new Date().getMinutes();
+
+			const key = `${HH}${mm}`
+
+			if (TO_DOS_OBJ[key]) {
+				io.emit('server-action', { value: `/to-dos/${TO_DOS_OBJ[key]}` })
+			}
 		},
 		null,
 		false,

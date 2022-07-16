@@ -4,11 +4,11 @@ html
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")
 
   body
-    h1= title
+    h1.text-center= title
 
     ul.list-group
       each item in list
-        li.list-group-item.list-group-item-primary
+        li.list-group-item.text-center
           span.text-danger= item.time
           span.text-primary= item.action
 
