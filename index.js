@@ -1,6 +1,11 @@
 const express = require('express')
+const cron = require('./sevices/cron')
 const app = express()
 const port = 3000
+
+// init services:
+cron();
+
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
