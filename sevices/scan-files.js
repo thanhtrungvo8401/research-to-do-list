@@ -6,11 +6,17 @@ module.exports = function () {
         if (err) console.log(err);
     
         else {
+            const toDos = {};
+
             files.forEach(f => {
                 if (path.extname(f) == '.mp3') {
-                    // console.log(path.basename(f, '.mp3'));
+                    const fileWithoutType = path.basename(f, '.mp3');
+                    
+                    toDos[fileWithoutType.slice(-4)] = f;
                 }
             })
+
+            global.TO_DOS_OBJ = toDos;
         }
     })
 }
