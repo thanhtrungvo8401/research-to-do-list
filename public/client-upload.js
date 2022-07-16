@@ -13,6 +13,8 @@ function submit(e) {
     })
     .then(res => {
         console.log(res);
+        alert('UPLOAD SUCCESS');
+        window.location.href = '/'
     })
     .catch(err => {
         console.log(err);

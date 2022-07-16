@@ -19,15 +19,16 @@ const upload = multer({
     fileFilter: (req, file, cb) => {
         const validType = ["audio/mpeg3", "audio/x-mpeg-3", "audio/mpeg"].includes(file.mimetype);
 
-        const nameWithoutType = path.basename(file.originalname, '.mp3')
+        const nameWithoutType = path.basename(file.originalname, '.mp3');
+
         const validName = nameWithoutType.slice(-5).startsWith('-') 
             && +nameWithoutType.slice(-4, -2) < 24 
-            && ['00, 15, 30, 45'].includes(nameWithoutType.slice(-2))
+            && ['00', '15', '30', '45'].includes(nameWithoutType.slice(-2))
 
         if (validType && validName) {
             cb(null, true)
         } else {
-            cb(new Error('Name or type invalid'));
+            cb(new Error('Name or type invalid: ' + file.originalname));
         }
     }
 });
