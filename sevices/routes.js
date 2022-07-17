@@ -1,5 +1,7 @@
 const upload = require("./multer")
 const scanFiles = require("./scan-files")
+const path = require('path');
+const fs = require('fs')
 
 module.exports = function (app) {
     app.get('/', (req, res) => {
@@ -21,6 +23,19 @@ module.exports = function (app) {
     })
 
     app.post('/upload', upload.single('file'), (req, res) => {
+        scanFiles();
+
+        res.json({ success: true })
+    })
+
+    app.get('/delete', (req, res) => {
+        const { files } = req.query;
+        const filesArr = files.split(';');
+
+        filesArr.forEach(f => {
+            fs.unlinkSync(path.join(__dirname, '..', 'public', 'to-dos', f));
+        });
+
         scanFiles();
 
         res.json({ success: true })
