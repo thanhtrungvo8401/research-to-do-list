@@ -8,13 +8,18 @@ html
     div(style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: white; z-index: 999; display: flex; align-items: center; justify-content: center;", id="bg")
       h1.text-center Cham vao man hinh!
 
-    h1.text-center= title
+    h1.text-center(style="font-size: 5rem")= title
 
     ul.list-group
       each item in list
         li.list-group-item.text-center
-          span.text-danger= item.time
-          span.text-primary= item.action
+          span.text-danger(style="font-size: 3rem")= item.time
+          span.text-primary(style="font-size: 3rem")= item.action
+    
+    br
+    br
+
+    h1.text-center#time(style="font-size: 5rem")
 
     br
     h2 Ten file:
