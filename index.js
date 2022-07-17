@@ -27,6 +27,6 @@ scanFiles()
 // register root:
 routesRegister(app);
 
-server.listen(port, () => {
+server.listen(process.env.PORT || port, () => {
     console.log(`Server is listening on port ${port}`)
 })
